@@ -8,7 +8,7 @@ description   = "Template for Nim projects"
 license       = "Unlicense"
 srcDir        = "src"
 binDir        = "bin"
-bin           = @["nim_template"]
+namedBin      = {"nim_template": "program"}.toTable()
 
 
 # Dependencies
