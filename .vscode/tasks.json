@@ -6,25 +6,14 @@
     {
       "label": "debug",
       "type": "shell",
-      "command": "nim",
-      "args": [
-        "c",
-        "--debugger:native",
-        "--outdir:${workspaceFolder}/bin",
-        "${file}"
-      ]
+      "command": "nimble",
+      "args": ["genDebug"]
     },
     {
       "label": "release",
       "type": "shell",
-      "command": "nim",
-      "args": [
-        "c",
-        "-d:release",
-        "-d:lto",
-        "--outdir:${workspaceFolder}/bin/release",
-        "${file}"
-      ]
+      "command": "nimble",
+      "args": ["genRelease"]
     }
   ]
 }
