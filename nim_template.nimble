@@ -1,4 +1,4 @@
-### The name of this file has to match the repository's! ###
+### The name of this file can't have `-`, use `_` instead ###
 
 # Package
 
