@@ -14,12 +14,3 @@ namedBin      = {"nim_template": "program"}.toTable()
 # Dependencies
 
 requires "nim ^= 2.0.0"
-
-
-# Tasks
-
-task genDebug, "Generates a binary for debugging":
-  exec "nimble build --debugger:native"
-
-task genRelease, "Generates an optimized binary":
-  exec "nimble build -d:release -d:lto"

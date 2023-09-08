@@ -7,13 +7,20 @@
       "label": "debug",
       "type": "shell",
       "command": "nimble",
-      "args": ["genDebug"]
+      "args": [
+        "build",
+        "--debugger:native"
+      ]
     },
     {
       "label": "release",
       "type": "shell",
       "command": "nimble",
-      "args": ["genRelease"]
+      "args": [
+        "build",
+        "-d:release",
+        "-d:lto"
+      ]
     }
   ]
 }
