@@ -2,18 +2,13 @@
 
 with pkgs;
 mkShell {
-  # Add executable packages
+  # Add system dependencies
   packages = [
     clang
     mold
     gdb
     nim2
     nimble-unwrapped
-  ];
-  
-  # Add build dependencies of the listed derivations
-  inputsFrom = [
-
   ];
 
   # Bash statements that are executed by nix-shell
