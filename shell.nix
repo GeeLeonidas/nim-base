@@ -15,7 +15,7 @@ mkShell {
     gdb
     git
     nim2
-    nimble-unwrapped
+    nim2Packages.nimble
   ];
   buildInputs = libs;
 
