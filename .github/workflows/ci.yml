@@ -1,16 +1,25 @@
-name: Build
-on: push
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
 jobs:
-  build:
+  run-nix:
+    name: Run Nix development shell
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
-          # - windows-latest
           # - macOS-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Cache Nix store
+        uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v3
@@ -19,10 +28,5 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
           restore-keys: |
             ${{ runner.os }}-nimble-
-        if: runner.os != 'Windows'
-      - name: Setup nim
-        uses: jiro4989/setup-nim-action@v1
-        with:
-          nim-version: "2.x"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: nimble build -Y
+      - name: Run `nimble build -Y` inside Nix flake
+        run: nix develop --command -- nimble build -Y
