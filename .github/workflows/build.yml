@@ -11,7 +11,7 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Run `nimble build` in a Nix shell
-        uses: ./
+        uses: workflow/nix-shell-action@v3
         with:
           script: |
             nimble build
