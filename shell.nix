@@ -13,6 +13,7 @@ mkShell {
     clang
     mold
     gdb
+    git
     nim2
     nimble-unwrapped
   ];
