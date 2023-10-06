@@ -20,6 +20,8 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
       - name: Cache Nix store
         uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Check Nix flake
+        run: nix flake check
       - name: Cache Nimble
         id: cache-nimble
         uses: actions/cache@v3
@@ -28,7 +30,5 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
           restore-keys: |
             ${{ runner.os }}-nimble-
-      - name: Enter Nix development shell
-        run: nix develop
-      - name: Run `nimble build -Y`
-        run: nimble build -Y
+      - name: Run `nimble build -Y` inside Nix flake
+        run: nix develop --command -- nimble build -Y
