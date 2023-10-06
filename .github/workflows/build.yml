@@ -1,0 +1,10 @@
+name: Build
+on: push
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nixbuild/nix-quick-install-action@v25
+      - run: nix-shell --pure
+      - run: nimble build
