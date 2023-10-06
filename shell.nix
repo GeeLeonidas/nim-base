@@ -10,10 +10,10 @@ in
 mkShell {
   # Add system dependencies
   packages = [
+    gitFull
     clang
     mold
     gdb
-    git
     nim2
     nim2Packages.nimble
   ];
